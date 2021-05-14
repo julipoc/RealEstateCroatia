@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron" id="profile-jumbotron">
+	<div class="container" id="profile-container">
+		<div class="row profile">
+			<div class="col-md-3">
+				<div class="profile-sidebar">
+
+					<div class="profile-userpic">
+						<img class="img-responsive" src="{{picture_file}}">
+					</div>
+
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">
+							<p class="account-heading"> {{current_user.username}}</p>
+						</div>
+						<div class="profile-email">
+							<p class="text-secondary"> {{current_user.email}}</p>
+						</div>
+					</div>
+
+					<div class="profile-usermenu">
+						<ul class="nav">
+							<li class="active">
+								<a class="nav-item nav-link" href="{{ url_for('users.profile') }}"><i class="fa fa-info-circle" aria-hidden="true"></i> Profile</a>
+							</li>
+							<li>
+								<a class="nav-item nav-link" href="{{ url_for('posts.create_post') }}"><i class="fa fa-plus" aria-hidden="true"></i> New Post</a>
+							</li>
+							<li>
+								<a class="nav-item nav-link" href="{{ url_for('users.user_posts', username=current_user.username) }}"><i class="fa fa-clipboard" aria-hidden="true"></i> Your Posts</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="profile-content">
+					<form method="POST" action="" enctype="multipart/form-data" id="user-info-form">
+						<h4><i class="fa fa-info-circle" aria-hidden="true"></i> Info</h4><br>
+						{{form.hidden_tag()}}
+
+						{{form.email.label()}} {{form.email()}}
+						{% for error in form.email.errors %}
+							<span style="color: red;">{{ error }}</span>
+						{% endfor %}<br>
+
+						{{form.username.label()}} {{form.username()}}
+						{% for error in form.username.errors %}
+							<span style="color: red;">{{ error }}</span>
+						{% endfor %}<br><br>
+
+						{{form.picture.label()}}<br> {{form.picture()}}
+						{% if form.picture.errors %}
+							{% for error in form.picture.errors %}
+								<span style="color: red;">{{ error }}</span>
+							{% endfor %}
+						{% endif %}<br><br>
+
+						{{form.submit()}}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron" id="login-jumbotron">
+    <div class="container">
+        <br><div class="card" id="login-card">
+            <div class="card-body" id="login-card-body">
+                <form method="POST" id="login-form">
+                    <h3 class="title" id="login-title"><span>───</span> LOG IN <span>───</span></h3>
+                        {{form.hidden_tag()}}
+
+                        {{form.email.label()}}<br>
+                        <i class="fa fa-envelope"></i>
+                        {{form.email(placeholder="Email", id="login-email")}}<br>
+                        {% for error in form.email.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+
+                        {{form.password.label()}}<br>
+                        <i class="fa fa-lock"></i>
+                        {{form.password(placeholder="Password", id="login-password")}}<br>
+                        {% for error in form.password.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}<br>
+
+                    {{form.remember.label()}} {{form.remember()}}<br>
+                    <br>{{form.submit(id="login-submit")}}
+                </form><br><br>
+
+                <p>Create an account!<a class="nav-link d-md-inline" href="{{ url_for('users.register') }}" id="logreg-link">Register</a></p>
+            </div>
+        </div><br><br>
+    </div>
+</div>
+
+{% endblock %}

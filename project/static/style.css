@@ -1,0 +1,957 @@
+body {
+    font-family: Georgia, serif;
+    background-color: rgba(236, 238, 241);
+}
+
+
+/*navbar*/
+
+.site-header nav {
+    background-color: #f5f5f5;
+}
+
+.collapse navbar-collapse {
+    height: 80px;
+    width: 2px;
+}
+
+#nav-login, #nav-register, #nav-profile {
+    color: #ff7f00;
+}
+
+#nav-login {
+    border-left: 1px solid #ff7f00;
+}
+
+#nav-login:hover, #nav-register:hover, #nav-profile:hover{
+    color: #ff6700;
+}
+
+@media (max-width:767px) {
+    #nav-login, #nav-register
+    {
+    border: 0px solid !important;
+    }
+}
+
+span {
+    color: #ff7f00;
+}
+
+#nav-name, #footer-name {
+    color: #585858;
+}
+
+
+/*homepage*/
+
+#home-background {
+    background: url(background/home-background.jpeg);
+    height: 650px;
+    margin-top: -80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (max-width:767px) {
+    #home-background
+    {
+    background-size: 100% 73%;
+    height: 550px;
+    }
+}
+
+#home-text {
+    background-color: rgba(0,0,0, .40);
+    width: 80%;
+    min-height: 220px;
+    margin-top: 12%;
+}
+
+#home-background h1, #home-background h5 {
+    position: relative;
+    text-align: center;
+    top: 40px;
+}
+
+#home-background h1 {
+    font-size: 45px;
+    color: white;
+}
+
+@media (max-width:767px) {
+    #home-background h1
+    {
+    font-size: 40px;
+    }
+}
+
+#home-background h5 {
+    font-size: 25px;
+    color: white;
+}
+
+@media (max-width:767px) {
+    #home-background h5
+    {
+    font-size: 20px;
+    }
+}
+
+#button-home {
+    color: white;
+    text-decoration: none;
+    background-color: #ff7f00;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    border-radius: 0px;
+    transition: transform .2s;
+    width:115px;
+    height:40px;
+    line-height:30px;
+    font-weight: bold;
+    margin: 190px auto;
+    margin-top: 60px;
+    display:flex;
+}
+
+#button-home:hover {
+    transform: scale(1.1);
+}
+
+
+/*homepage-filterform*/
+
+#home-jumbotron {
+    background-image: url(background/home-background2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: -37px;
+}
+
+#home-form {
+    margin-top: 150px;
+    background-image: url(background/filter-form.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 240px;
+}
+
+#filter_form {
+    background-color: rgba(0,0,0, .40);
+    width: 70%;
+    min-width: 322px;
+    min-height: 120px;
+    margin: auto;
+    align-content: center;
+}
+
+#filter_form h4 {
+    color: #f5f5f5;
+    text-align: center;
+    margin-top: 8px;
+}
+
+#county_filter, #quadrature_filter, #price_filter, #property_type_filter, #sale_rent, #submit {
+    width: 14%;
+    height: 40px;
+    border: transparent;
+    background-color: white;
+    border-radius: 0px;
+    margin-top: 10px;
+    background-color:#fefefa;
+    outline: none;
+    opacity: none;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+#county_filter {
+    width: 23%;
+}
+
+#quadrature_filter, #price_filter {
+    height: 40.5px;
+}
+
+#submit {
+    background-color: #ff6700;
+    color: white;
+    margin-left: 5px;
+    transition: transform .2s;
+    height: 45px;
+}
+
+#submit:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width:973px) {
+    #county_filter, #quadrature_filter, #price_filter, #property_type_filter, #sale_rent, #submit
+    {
+    width: 100px;
+    }
+}
+
+
+/*cards-home*/
+
+#all-posts {
+    text-align: center;
+    color: rgba(1,36,38);
+}
+
+#all-posts-row, #result-posts-row, #user-posts-row {
+    margin-left: 10%;
+    width: 80%;
+}
+
+.card {
+    background: #f5f5f5;
+    box-shadow: 1px 1px 18px gray;
+    border: none;
+    max-width: 20rem;
+    transition: transform .2s;
+    margin-top: 30px;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+#all-posts-btn, #results-btn, #user-posts-btn, #user-posts-btn2 {
+    min-width: 40%;
+    margin-left: 30%;
+    background-color: #ff6700;
+    color: white;
+    transition: transform .2s;
+    border-radius: 0px;
+    outline: 0;
+    box-shadow: none;
+
+}
+
+#all-posts-btn:hover, #results-btn:hover, #user-posts-btn:hover, #register-submit:hover, #login-submit:hover,
+ #user-posts-btn2:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+h3 a {
+    color: black;
+    font-size: 22px;
+}
+
+h3 a:hover {
+    color: 	#ff6700;
+    text-decoration: none;
+}
+
+.card-body h3 {
+    text-align: center;
+    margin-top: -12px;
+    min-height: 40px;
+}
+
+.card-body h4 {
+    color: #ff6700;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.card-body h6, .card-body p {
+    font-size: 13px;
+}
+
+.card-body p, .card-body h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card-body h6 a {
+    color: gray;
+}
+
+.card-footer {
+    font-size: 16px;
+}
+
+.pagination li, .pagination a {
+    color: gray;
+}
+
+.pagination a:hover, .pagination li:hover {
+    color: gray;
+}
+
+.pagination {
+    margin: 10px auto;
+}
+
+.pagination li {
+    background-color: #f5f5f5;
+}
+
+
+/*about*/
+
+#about-page h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+#about-img1 {
+    width: 30%;
+    height: 280px;
+    float: left;
+    display: block;
+    border-radius: 50%;
+    box-shadow: 3px 3px white, 8px 8px #ff7f00;
+    margin: 60px 80px auto;
+}
+
+#about-page {
+    margin: 0 auto;
+    background-image: url(background/home-background2.png);
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+}
+
+#about-text {
+    margin-left: 52%;
+    width: 50%;
+    text-align: justify;
+}
+
+#about-text h1, #text-about h1 {
+    font-size: 30px;
+    color: #ff7f00;
+}
+
+@media (max-width:996px) {
+    #about-img1
+    {
+    display: none;
+    }
+}
+
+@media (max-width:996px) {
+    #about-page
+    {
+    background-image: none;
+    }
+}
+
+@media (max-width:996px) {
+    #about-text, #about-text h1
+    {
+    margin: auto;
+    width: 100%;
+    text-align: justify;
+    }
+}
+
+#about-home {
+    margin: 0 auto;
+}
+
+#about-home-text {
+    margin-left: 45%;
+    margin-top: -300px;
+    width: 40%;
+    text-align: justify;
+}
+
+#button-home-about {
+    width: 25%;
+    margin-left: 0%;
+    color: white;
+    text-decoration: none;
+    background-color: #ff7f00;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    border-radius: 0px;
+    transition: transform .2s;
+    line-height:30px;
+    font-weight: bold;
+    display:flex;
+}
+
+#button-home-about:hover {
+    transform: scale(1.1);
+}
+
+#about-home1 {
+    width: 130px;
+    height: 130px;
+    margin-top: 150px;
+    margin-left: 150px;
+    display: block;
+    box-shadow: -1px -1px 0px 1px white, -3.5px -3.5px 0px 3.5px #ff7f00;
+}
+
+#about-home2 {
+    width: 180px;
+    height: 220px;
+    margin-top: -220px;
+    margin-left: 290px;
+    display: block;
+}
+
+#about-home3 {
+    width: 190px;
+    height: 120px;
+    margin-top: 20px;
+    margin-left: 150px;
+    display: block;
+}
+
+#about-home4 {
+    width: 120px;
+    height: 100px;
+    margin-top: -100px;
+    margin-left: 350px;
+    display: block;
+    box-shadow: 3px 3px white, 8px 8px #ff7f00;
+}
+
+#about-background {
+    background-image: url(background/about-background.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 100%;
+    height: 400px;
+}
+
+#about-background h1, #about-background p {
+    text-align: center;
+    color: #ff7f00;
+    font-size: 40px;
+}
+
+#about-background p {
+    font-size: 15px;
+    color: #5a7391;
+    width: 50%;
+    margin: auto;
+}
+
+#text-about {
+    width: 100%;
+    margin-top: 5%;
+}
+
+#text-about p, #about-text p {
+    color: gray;
+    text-align: justify;
+}
+
+@media (max-width:1200px) {
+    #about-home img
+    {
+    display: none;
+    }
+}
+
+@media (max-width:1200px) {
+    #about-home-text
+    {
+    margin: auto;
+    width: 100%;
+    }
+}
+
+@media (max-width:1200px) {
+    #about-home-text h3
+    {
+     color: #ff7f00;
+    }
+}
+
+@media (max-width:1200px) {
+    #button-home-about
+    {
+     max-width: 100px;
+    }
+}
+
+@media (max-width:1200px) {
+    #home-form
+    {
+     margin: auto;
+    }
+}
+
+@media (max-width:769px) {
+    #about-home-text
+    {
+     margin-top: -50px;
+    }
+}
+
+
+/*register and login */
+
+#register-jumbotron, #login-jumbotron {
+    background-image: url(background/register-login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+#register-card, #login-card {
+    margin: auto;
+    background: #FFFAFA;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px #000;
+    min-width: 30%;
+    height: 420px;
+    font-size: 15px;
+    background-image: url(background/register-login2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#register-card:hover, #login-card:hover {
+    transform: none;
+}
+
+#register-card-body, #login-card-body {
+    margin: 30px auto;
+    text-align: center;
+}
+
+#register-card-body h3 span, #login-card-body h3 span {
+    color: #ff7f00;
+}
+
+#login-card-body {
+    margin: 50px auto;
+}
+
+#register-submit, #login-submit {
+    min-width: 35%;
+    height: 35px;
+    background-color: #ff7f00;
+    color: white;
+    transition: transform .2s;
+    border-radius: 0px;
+    border: none;
+    outline: 0;
+    box-shadow: none;
+}
+
+#register-submit:hover, #login-submit:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+#reglog-link, #logreg-link {
+    margin-left: -15px;
+    color: #ff7f00;
+    text-decoration: underline;
+}
+
+
+
+/*read post*/
+
+.carousel, .carousel-inner {
+     height: 70vh;
+     max-width: 700px;
+     margin: auto;
+}
+
+.slide {
+    height: 400px;
+}
+
+.carousel img {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    min-width: 700px;
+    height: 300px;
+}
+
+@media (max-width:783px) {
+    .carousel img
+    {
+    min-width: 500px;
+    height: 250px;
+    }
+}
+
+#table, #table th, #table td {
+    border: 1px solid white;
+    margin: 0  0 auto;
+    background-color: #F6F6F6;
+}
+
+#table th, #table td {
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+#read_post-container h2 {
+    font-size: 35px;
+    border-bottom: 1px solid #ff7f00;
+}
+
+#read_post-container h5 {
+    font-style: italic;
+    font-size: 18px;
+    color: gray;
+}
+
+#read_post-container h5 a {
+    color: #555555;
+}
+
+#a-salerent {
+    color: white;
+    background-color: #ff7f00;
+    min-width: 8%;
+    height: 35px;
+    margin: 0 0 auto;
+    text-align: center;
+}
+
+#description h3 {
+    text-decoration: underline #ff7f00;
+    font-size: 25px;
+}
+
+#update-delete {
+     margin: 0 40% auto;
+}
+
+#update-btn {
+    color: white;
+    text-decoration: none;
+    background-color: #ff7f00;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-radius: 0px;
+    transition: transform .2s;
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+}
+
+#update-btn:hover, #delete-btn:hover {
+    transform: scale(1.1);
+}
+
+#delete-btn {
+    width: 80px;
+    height: 35px;
+    border: none;
+    outline: none;
+    background-color: #a9a9a9;
+    color: white;
+    transition: transform .2s;
+    margin: 0 5px auto;
+}
+
+#del-modal {
+    background-color: #ff7f00;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+#del-modal:hover {
+    background-color: #ff6700;
+    color: white;
+}
+
+
+/*user-posts*/
+
+#all-user-posts {
+    margin: 0 auto;
+}
+
+#user-posts, #user-posts1 {
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,.5);
+}
+
+#user-posts-h2, #user-posts1-h2 {
+    font-size: 20px;
+    margin-left: 12%;
+    color: #f5f5f5;
+}
+
+#user-posts-p, #user-posts1-p {
+    font-size: 15px;
+    margin-left: 12%;
+    color: #f5f5f5;
+}
+
+#user-posts-img, #user-posts1-img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-top: -2%;
+    box-shadow: 3px 3px 25px black;
+}
+
+#user-posts-row {
+    margin-top: 5%;
+}
+
+#user_posts-container {
+    margin: 0 auto;
+}
+
+#user-posts-btn2 {
+    font-size: 11px;
+    margin-left: 25%;
+    margin-right: 20%;
+    margin-top: -10px;
+}
+
+
+/*profile*/
+
+.profile {
+    margin: 20px 0 auto;
+    padding: 20px;
+    margin-bottom: 50px;
+    box-shadow: 3px 3px 20px rgba(25,66,72);
+}
+
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background-color: rgba(236, 238, 241);
+}
+
+.profile-userpic img {
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    box-shadow: 3px 3px white, 6px 6px #ff7f00;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    margin-bottom: 7px;
+    font-size: 17px;
+}
+
+.profile-email {
+    color: #5a7391;
+    font-size: 0.8vw;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 756px) {
+    .profile-email {
+    font-size: 12px;
+    }
+}
+
+.profile-usermenu {
+    margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+    width: 100%;
+}
+
+.profile-usermenu ul li a {
+    color: #93a3b5;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #ff7f00;
+}
+
+.profile-usermenu ul li.active a {
+    color: #ff7f00;
+    background-color: #f6f9fb;
+    border-left: 2px solid #ff7f00;
+    margin-left: -2px;
+}
+
+#profile-jumbotron, #create-jumbotron, #users-jumbotron {
+    background-image: url(background/profile-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+.profile-content {
+    padding: 40px 40px;
+    min-height: 380px;
+    background-color: rgba(236, 238, 241);
+}
+
+#user-post-img, #user-post-img2 {
+    height: 100px;
+}
+
+#post a {
+    font-size: 16px;
+    color: black;
+}
+
+#post a:hover {
+    color: 	#ff6700;
+    text-decoration: none;
+}
+
+#post {
+    text-align: center;
+}
+
+#post2 {
+    font-size: 11px;
+}
+
+#user-info-form {
+    margin: auto;
+    color: #5a7391;
+}
+
+#user-info-form h3, #create-form h4, #published-posts {
+    text-decoration: underline #ff7f00;
+    color: #5a7391;
+}
+
+#user-info-form input, #create-form input, #create-form select, #create-form textarea {
+    color: #353839;
+}
+
+#user-info-form #submit, #create-form #submit {
+    color: white;
+    margin: auto;
+    min-width: 100px;
+}
+
+#user-info-form #email, #user-info-form #username, #create-form #title,
+#create-form #county, #create-form #quadrature, #create-form #price,
+#create-form #sale_rent2, #create-form #property_type, #create-form #text {
+    float: right;
+    width: 245px;
+    height: 30px;
+    margin: 0 160px auto;
+}
+
+#create-form #text {
+    height: 100px;
+}
+
+@media (max-width:1200px) {
+    #user-info-form #email, #user-info-form #username, #create-form #title,
+    #create-form #county, #create-form #quadrature, #create-form #price,
+    #create-form #sale_rent2, #create-form #property_type, #create-form #text
+    {
+    margin: 0 auto;
+    margin-left: 0px;
+    width: 150px;
+    }
+}
+
+@media (max-width:767px) {
+    #user-info-form #picture, #create-form #property_pics
+    {
+    width: 300px;
+    }
+}
+
+#create-form #text {
+    width: 300px;
+}
+
+@media (max-width:990px) {
+    #create-form #text
+    {
+    width: 220px;
+    }
+}
+
+#create-form label {
+    color: #5a7391;
+}
+
+
+/*footer*/
+
+.footer {
+    position: static;
+    bottom: 0;
+    padding-top: 20px;
+    width: 100%;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    height: auto;
+    background-color: rgba(3,41,60, 0.9);
+}
+
+.footer-margin {
+    display: flex;
+    position: relative;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    height: 250px;
+}
+
+#footer-name {
+    background-color: #f5f5f5;
+    border-radius:50%;
+    margin: 30px auto;
+}
+
+#footer-name h4 {
+    font-size: 19px;
+}
+
+#footer-quick-links a, #footer-quick-links h5, #copyright, #copyright a, #find-us h5,
+#find-us p, #footer-follow-links h5 {
+    color: #e5e4e2;
+}
+
+#footer-follow-links {
+    margin-top: 4%;
+}
+
+#footer-follow-links svg, #copyright a {
+    color: #ff7f00;
+}
+
+#footer-follow-links svg:hover {
+    color: #ff6700;
+}

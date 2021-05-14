@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron" id="home-background">
+    <div class="container" id="text-container">
+        <div class="container" id="home-text">
+            <h1>FIND YOUR PERFECT REAL ESTATE</h1>
+            <h5>── with one simple search ──</h5>
+            <a href="#home-form" id="button-home" class="btn">GET STARTED</a>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="about-home">
+    <img class="card-img" src="{{url_for('static', filename='background/about-home1.jpg')}}" id="about-home1">
+    <img class="card-img" src="{{url_for('static', filename='background/about-home2.jpeg')}}" id="about-home2">
+    <img class="card-img" src="{{url_for('static', filename='background/about-home3.jpeg')}}" id="about-home3">
+    <img class="card-img" src="{{url_for('static', filename='background/about-home4.jpg')}}" id="about-home4">
+    <div class="container" id="about-home-text">
+        <h3>About Us</h3><br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias atque aut dolorem eius facere, fugiat illo neque quibusdam rerum suscipit temporibus. Alias atque dolorum, excepturi iure non quisquam ratione.</p>
+        <a href="{{ url_for('core.about') }}" id="button-home-about" class="btn">READ MORE</a>
+    </div>
+</div><br>
+
+<div class="jumbotron" id="home-form">
+    <form method="POST" id="filter_form">
+        <h4>Search our properties</h4>
+        {{form.hidden_tag()}}
+
+        {{form.county_filter.label()}} {{form.county_filter()}}
+        {% for error in form.county_filter.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+
+        {{form.property_type_filter.label()}} {{form.property_type_filter()}}
+        {% for error in form.property_type_filter.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+
+        {{form.sale_rent.label()}} {{form.sale_rent()}}
+        {% for error in form.sale_rent.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+
+        {{form.quadrature_filter.label()}} {{form.quadrature_filter(placeholder="Min ㎡")}}
+        {% for error in form.quadrature_filter.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+
+        {{form.price_filter.label()}} {{form.price_filter(placeholder="Max price (€)")}}
+        {% for error in form.price_filter.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+
+        {{form.submit()}}
+    </form>
+</div>
+
+<div class="jumbotron" id="home-jumbotron">
+    <div class="container" id="home-container">
+    <div class="row" id="result-posts-row">
+
+    {% for post in all_posts %}
+        {% if post.county == form.county_filter.data %}
+
+            {% if form.quadrature_filter.data %}
+               {% if post.quadrature >= form.quadrature_filter.data %}
+
+                    {% if form.price_filter.data %}
+                        {% if post.price <= form.price_filter.data %}
+
+                            {% if post.property_type == form.property_type_filter.data %}
+
+                                {% if post.sale_rent == form.sale_rent.data %}
+                                    <div class="col-xs-5 col-md-6 col-lg-4 d-flex align-items-stretch">
+                                        <a style="display:block" href="{{url_for('posts.read_post', post_id=post.id)}}">
+                                        <div class="card">
+                                            {% if post.property_pictures[19] == "e" %}
+                                            <img class="card-img-top" src="{{url_for('static', filename='property_pictures/' + post.property_pictures[0:21])}}" alt="Card image cap" >
+                                            {% else %}
+                                            <img class="card-img-top" src="{{url_for('static', filename='property_pictures/' + post.property_pictures[0:20])}}" alt="Card image cap" >
+                                            {% endif %}
+                                            <div class="card-body">
+                                                <h3><a href="{{url_for('posts.read_post', post_id=post.id)}}">{{post.title}}</a></h3>
+                                                <h6>Posted by: <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a></h6>
+                                                <p>Published on: {{post.date.strftime("%Y-%m-%d")}}</p>
+                                                <h4 align="right">{{post.price}} €</h4>
+                                                <div class="card-footer">
+                                                    <small class="form-text text-muted">{{post.county}} | {{post.quadrature}} ㎡ | {{post.property_type}} | {{post.sale_rent}}</small>
+                                                </div>
+                                                <br><a href="{{url_for('posts.read_post', post_id=post.id)}}" class="btn" id="results-btn">See More</a>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+               {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div><br><br>
+
+
+    <h3 id="all-posts">All Real Estate & Homes</h3><br>
+    <div class="row" id="all-posts-row">
+        {% for post in post.items %}
+            <div class="col-xs-5 col-md-6 col-lg-4 d-flex align-items-stretch" id="all-posts-column">
+                <a style="display:block" href="{{url_for('posts.read_post', post_id=post.id)}}">
+                    <div class="card" id="all-posts-card">
+                        {% if post.property_pictures[19] == "e" %}
+                        <img class="card-img-top" src="{{url_for('static', filename='property_pictures/' + post.property_pictures[0:21])}}" alt="Card image cap" >
+                        {% else %}
+                        <img class="card-img-top" src="{{url_for('static', filename='property_pictures/' + post.property_pictures[0:20])}}" alt="Card image cap" >
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h3><a href="{{url_for('posts.read_post', post_id=post.id)}}">{{post.title}}</a></h3>
+                            <h6>Posted by: <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a></h6>
+                            <p>Published on: {{post.date.strftime("%Y-%m-%d")}}</p>
+                            <h4 align="right">{{post.price}} €</h4>
+                            <div class="card-footer">
+                                <small class="form-text text-muted">{{post.county}} | {{post.quadrature}} ㎡ | {{post.property_type}} | {{post.sale_rent}}</small>
+                            </div>
+                            <br><a href="{{url_for('posts.read_post', post_id=post.id)}}" class="btn" id="all-posts-btn">See More</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div><br>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+          {% for page_num in post.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+              {% if page_num %}
+                {% if post.page == page_num %}
+                    <li class="page-item disabled"><a class="page-link" href="{{url_for('core.home', page=page_num)}}">{{page_num}}</a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="{{url_for('core.home', page=page_num)}}">{{page_num}}</a></li>
+                {% endif %}
+              {% else %}
+                <li class="page-link">...</li>
+              {% endif %}
+          {% endfor %}
+      </ul>
+    </nav>
+    <br><br><br><br>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

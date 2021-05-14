@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron" id="users-jumbotron">
+{% if current_user.is_authenticated %}
+    {% if current_user.username == user.username %}
+        <div class="container">
+            <div class="row profile">
+                <div class="col-md-3">
+                    <div class="profile-sidebar">
+
+                        <div class="profile-userpic">
+                            <img class="img-responsive" src="{{picture_file}}">
+                        </div>
+
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                <p class="account-heading"> {{current_user.username}}</p>
+                            </div>
+                            <div class="profile-email">
+                                <p class="text-secondary"> {{current_user.email}}</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-usermenu">
+                            <ul class="nav">
+                                <li>
+                                    <a class="nav-item nav-link" href="{{ url_for('users.profile') }}"><i class="fa fa-info-circle" aria-hidden="true"></i> Profile</a>
+                                </li>
+                                <li >
+                                    <a class="nav-item nav-link" href="{{ url_for('posts.create_post') }}"><i class="fa fa-plus" aria-hidden="true"></i> New Post</a>
+                                </li>
+                                <li class="active">
+                                    <a class="nav-item nav-link" href="{{ url_for('users.user_posts', username=current_user.username) }}"><i class="fa fa-clipboard" aria-hidden="true"></i> Your Posts</a>
+                                </li>
+                            </ul>
+                        </div>
+    {% else %}
+    <div class="jumbotron" id="user-posts1">
+        <img id="user-posts1-img" class="rounded-circle account-img" src="{{url_for('static', filename='profile_pictures/' + user.profile_picture)}}">
+        <h2 id="user-posts1-h2"> Posts from {{user.username}}</h2>
+        <p id="user-posts1-p"> Email address: {{user.email}}</p>
+    </div>
+    {% endif %}
+    {% endif %}
+
+    {% if current_user.is_authenticated == False %}
+        <div class="jumbotron" id="user-posts">
+            <img id="user-posts-img" class="rounded-circle account-img" src="{{url_for('static', filename='profile_pictures/' + user.profile_picture)}}">
+            <h2 id="user-posts-h2"> Posts from {{user.username}}</h2>
+            <p id="user-posts-p"> Email address: {{user.email}}</p>
+        </div>
+    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="col-md-9" id="all-user-posts">
+                <div class="profile-content">
+                    <h4 id="published-posts"><i class="fa fa-clipboard" aria-hidden="true"></i> Published Posts</h4>
+                    <div class="row" id="user-posts-row">
+                        {% for post in post.items %}
+                        <div class="col-xs-5 col-md-6 col-lg-4 d-flex align-items-stretch">
+                        <a style="display:block" href="{{url_for('posts.read_post', post_id=post.id)}}">
+                            <div class="card">
+                                {% if post.property_pictures[19] == "e" %}
+                                <img id="user-post-img" class="card-img-top" src="{{url_for('static', filename='property_pictures/' + post.property_pictures[0:21])}}" alt="Card image cap" >
+                                {% else %}
+                                <img id="user-post-img2" class="card-img-top" src="{{url_for('static', filename='property_pictures/' + post.property_pictures[0:20])}}" alt="Card image cap" >
+                                {% endif %}
+
+                                <div class="card-body" >
+                                    <p id="post"><a href="{{url_for('posts.read_post', post_id=post.id)}}">{{post.title}}</a></p>
+                                    <p id="post2">Published: {{post.date.strftime("%Y-%m-%d")}}</p>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        {% endfor %}
+                    </div><br><br>
+
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        {% for page_num in post.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                          {% if page_num %}
+                              {% if post.page == page_num %}
+                                    <li class="page-item disabled"><a class="page-link" href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a></li>
+                              {% else %}
+                                    <li class="page-item"><a class="page-link" href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a></li>
+                              {% endif %}
+                          {% else %}
+                            <li class="page-link">...</li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                    </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}
