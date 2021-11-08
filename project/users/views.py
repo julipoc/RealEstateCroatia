@@ -25,7 +25,7 @@ def register():
 @users.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
-    if form.validate_on_submit:
+    if form.validate_on_submit():
         user = Users.query.filter_by(email=form.email.data).first()
         if user is not None and user.check_password(form.password.data):
             login_user(user)
